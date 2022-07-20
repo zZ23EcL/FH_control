@@ -270,3 +270,53 @@ bool RS232::is_hex(char c, int &v) {
     }
     return false;
 }
+
+int RS232::getActualPos(string& str) {
+    int v = 999999999;
+    if(str.length()==13){
+        auto i=str.begin();
+        uint8_t length = uint8_t(*(i+1));
+        uint8_t node = uint8_t(*(i+2));
+        uint8_t command = uint8_t(*(i+3));
+        uint8_t indexLB=uint8_t(*(i+4));
+        uint8_t indexHB=uint8_t(*(i+5));
+        uint16_t index=indexLB+(indexHB<<8);
+        uint8_t subindex=uint8_t(*(i+6));
+        if(index==0x6064)
+            v=uint8_t(*(i+7))+(uint8_t(*(i+8))<<8)+(uint8_t(*(i+9))<<16)+(uint8_t(*(i+10))<<24);
+    }
+    return v;
+}
+
+void RS232::dealRXbuf(string& s,int& v){
+    string RXbuf;
+    int numS;
+    int numE;
+    bool search(true);
+    while(search){
+        numS=s.find_first_of('S');
+        numE=s.find_first_of('E');
+        if(0<=numS&&numS<=s.size()&&0<=numE&&numE<=s.size()){
+            for(int i=0;i<6;i++){
+                //6的原因是最多int 4个 加CRC+E=6，其实不可能int4个0x45时的CRC是45
+                string buf(s,numS,numE+1);
+                if(uint8_t(buf[1])==numE-numS-1){
+                    RXbuf=buf;
+                    int datatemp=getActualPos(RXbuf);
+                    if(datatemp!=999999999)
+                        v=datatemp;
+                    s.erase(numS,numE-numS+1);
+                    break;
+                }
+                else{
+                    numE=s.find_first_of('E',numE+1);
+                }
+            }
+        }
+        else
+            search= false;
+    }
+}
+
+
+

@@ -10,12 +10,9 @@ set(LIB_DIR /usr/local/lib)
 
 include_directories(${LIB_DIR})
 
-
-
 #lib local
+add_executable(github_serial main.cpp RS232.cpp MiniPID.h MiniPID.cpp)
 
+find_package(Threads REQUIRED)
 
-
-add_executable(github_serial main.cpp RS232.cpp)
-
-target_link_libraries(github_serial ${LIB_DIR}/libCppLinuxSerial.a)
+target_link_libraries(github_serial ${LIB_DIR}/libCppLinuxSerial.a Threads::Threads)

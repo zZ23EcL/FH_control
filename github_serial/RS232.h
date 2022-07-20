@@ -6,7 +6,9 @@
 #define FTDI_TEST_RS232_H
 
 #include <iostream>
-
+#include <thread>
+#include <chrono>
+#include "MiniPID.h"
 using namespace std;
 
 
@@ -127,6 +129,36 @@ public:
     *  @note:
     *  @see:
     */
+
+    int getActualPos(string&);
+    /*******************************************/
+    /** get realtime ActualPos
+    *
+    *
+    *  @param:
+    *  string& str :the RXbuf which need to deal with
+    *  @return:
+    *  int the actual position
+    *  @note:
+    *  @see:
+    */
+
+    void dealRXbuf(string&,int& v);
+    /*******************************************/
+    /** get realtime ActualPos
+    *
+    *
+    *  @param:
+    *  string& str :to get the RXbuf in pattern from the str
+    *  int&v       :to get the data from in RXbuf
+    *  @return:
+    *  void
+    *  @note:
+    *  @see:
+    */
+
+
+
 
 };
 
