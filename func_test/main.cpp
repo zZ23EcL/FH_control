@@ -78,9 +78,9 @@ void dealRXbuf(string& s){
                 string buf(s,numS,numE+1);
                 if(uint8_t(buf[1])==numE-numS-1){
                     RXbuf=buf;
-                    data=getActualPos(RXbuf);
-                    if(data!=999999999)
-                        printf("%d",data);
+                    int datatemp=getActualPos(RXbuf);
+                    if(datatemp!=999999999)
+                        data=datatemp;
                     s.erase(numS,numE-numS+1);
                     break;
                 }
