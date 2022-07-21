@@ -6,13 +6,13 @@
 #define GITHUB_SERIAL_MINIPID_H
 class MiniPID{
 public:
-    MiniPID(int, int);
-    MiniPID(int, int, int);
-    void setP(int);
-    void setD(int);
-    void setF(int);
-    void setPID(int, int);
-    void setPID(int, int, int);
+    MiniPID(float, float);
+    MiniPID(float, float, float);
+    void setP(float);
+    void setD(float);
+    void setF(float);
+    void setPID(float, float);
+    void setPID(float, float, float);
     void setOutputLimits(int);
     void setOutputLimits(int,int);
     void setDirection(bool);
@@ -31,9 +31,9 @@ private:
     bool bounded(int, int, int);
     void checkSigns();
     void init();
-    int P;
-    int D;
-    int F;
+    float P;
+    float D;
+    float F;
 
     int maxError;
     int errorSum;

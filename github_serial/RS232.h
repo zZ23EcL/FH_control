@@ -157,6 +157,7 @@ public:
     *  @see:
     */
 
+    string setPosRequest(void);
 
 
 

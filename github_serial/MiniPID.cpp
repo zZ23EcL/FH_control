@@ -6,11 +6,11 @@
 //**********************************
 //Constructor functions
 //**********************************
-MiniPID::MiniPID(int p,int d){
+MiniPID::MiniPID(float p,float d){
     init();
     P=p; D=d;
 }
-MiniPID::MiniPID(int p, int d, int f){
+MiniPID::MiniPID(float p, float d, float f){
     init();
     P=p; D=d; F=f;
 }
@@ -46,13 +46,13 @@ void MiniPID::init(){
  *
  * @param p Proportional gain. Affects output according to <b>output+=P*(setpoint-current_value)</b>
  */
-void MiniPID::setP(int p){
+void MiniPID::setP(float p){
     P=p;
     checkSigns();
 }
 
 
-void MiniPID::setD(int d){
+void MiniPID::setD(float d){
     D=d;
     checkSigns();
 }
@@ -64,7 +64,7 @@ void MiniPID::setD(int d){
  *
  * @param f Feed forward gain. Affects output according to <b>output+=F*Setpoint</b>;
  */
-void MiniPID::setF(int f){
+void MiniPID::setF(float f){
     F=f;
     checkSigns();
 }
@@ -74,12 +74,12 @@ void MiniPID::setF(int f){
  * @param i Integral gain.	Becomes large if setpoint cannot reach target quickly.
  * @param d Derivative gain. Responds quickly to large changes in error. Small values prevents P and I terms from causing overshoot.
  */
-void MiniPID::setPID(int p,  int d){
+void MiniPID::setPID(float p,  float d){
     P=p;D=d;
     checkSigns();
 }
 
-void MiniPID::setPID(int p,  int d,int f){
+void MiniPID::setPID(float p,  float d,float f){
     P=p;D=d;F=f;
     checkSigns();
 }

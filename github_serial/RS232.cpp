@@ -318,5 +318,21 @@ void RS232::dealRXbuf(string& s,int& v){
     }
 }
 
-
+string RS232::setPosRequest(void){
+    uint8_t temp[13];
+    temp[0]='S';
+    temp[1]=0x07;
+    temp[2]=0x01;
+    temp[3]=0x01;
+    temp[4]=0x64;
+    temp[5]=0x60;
+    temp[6]=0x00;
+    uint8_t CRC = 0xFF;
+    for (int i = 1; i < 7; i++)
+        CRC = CalcCRCByte(temp[i], CRC);
+    temp[7]=CRC;
+    temp[8]='E';
+    string str(temp,temp+9);
+    return str;
+}
 
