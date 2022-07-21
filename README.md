@@ -6,4 +6,4 @@ new version FaulHaber Motor Control By RS232 in Linux
 # 0720
 在线程中调用serial进行收发报错，发现是传递类参数的问题，等待解决
 # 0721
-can realize PosControl in Pc
+PC端的位置控制基本完成，现在需要重新创建为动态库文件，并为python的引用留出接口
