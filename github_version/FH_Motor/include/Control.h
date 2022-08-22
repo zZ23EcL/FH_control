@@ -25,6 +25,8 @@ public:
     void OpenL(void);
     bool setP(float);
     bool setD(float);
+    float getP(void);
+    float getD(void);
     bool setPos(int);
     bool setFlag(bool,bool);
     int getPos(void);

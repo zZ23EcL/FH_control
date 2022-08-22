@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -flto -shared  -o FH_Motor.cpython-38-x86_64-linux-gnu.so CMakeFiles/FH_Motor.dir/src/Control.cpp.o CMakeFiles/FH_Motor.dir/src/MiniPID.cpp.o CMakeFiles/FH_Motor.dir/src/RS232.cpp.o CMakeFiles/FH_Motor.dir/src/SerialPort.cpp.o  -lpthread 

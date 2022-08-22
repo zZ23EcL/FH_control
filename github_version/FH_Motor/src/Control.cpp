@@ -88,6 +88,14 @@ bool Control::setD(float DD) {
     return 1;
 }
 
+float Control::getP(void) {
+    return P;
+}
+
+float Control::getD(void) {
+    return D;
+}
+
 bool Control::setPos(int Pos) {
     TargetPos=Pos;
     return 1;
@@ -120,5 +128,10 @@ py::class_<Control>(m,"Control")
     .def("OpenL",&Control::OpenL)
     .def("SetFlag",&Control::setFlag)
     .def("SetPos",&Control::setPos)
-    .def("GetPos",&Control::getPos);
+    .def("GetPos",&Control::getPos)
+    .def("SetP",&Control::setP)
+    .def("SetD",&Control::setD)
+    .def("GetP",&Control::getP)
+    .def("GetP",&Control::getD);
+
 }
